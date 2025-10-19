@@ -1,1 +1,87 @@
+:root{
+  --bg1: #0b2b1d;
+  --bg2: #123b2a;
+  --accent: rgba(255, 230, 150, 0.95);
+  --soft: rgba(255,255,255,0.08);
+  --glass: rgba(255,255,255,0.06);
+}
 
+* { box-sizing: border-box; }
+body {
+  margin:0;
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg1), var(--bg2));
+  color: white;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.container{
+  width: min(980px, 96%);
+  padding: 20px;
+}
+
+header { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+h1 { margin:0; font-size:1.4rem; letter-spacing:1px; }
+.hud { display:flex; gap:12px; align-items:center; }
+
+.play-area{
+  position: relative;
+  height: 60vh;
+  min-height: 360px;
+  border-radius: 12px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.03), transparent 10%),
+    linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.02) 60%);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6) inset;
+  backdrop-filter: blur(2px);
+}
+
+/* 光（light）スタイル */
+.light {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,230,150,0.6) 40%, rgba(255,200,90,0.08) 70%, transparent 100%);
+  box-shadow: 0 0 20px 6px rgba(255,220,150,0.08), 0 0 8px 2px rgba(255,230,150,0.15);
+  transition: transform 200ms ease, opacity 250ms ease;
+  opacity: 0.95;
+}
+
+/* クリック時のポップ演出 */
+.light.pop {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0;
+}
+
+/* HUD & buttons */
+.controls { display:flex; gap:8px; justify-content:center; margin-top:12px; }
+button{
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.08));
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 14px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:active { transform: translateY(1px); }
+
+/* End screen */
+.end-screen{
+  position: absolute;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6));
+  font-size:1.2rem;
+  color: white;
+  text-align:center;
+  padding:20px;
+}
