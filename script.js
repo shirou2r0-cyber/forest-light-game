@@ -68,7 +68,7 @@ function startGame(){
   startBtn.style.display = "none";
 
   // BGM再生（ユーザー操作トリガーなのでブラウザが許可）
-  if (bgm) bgm.play().catch(()=>{});
+  //if (bgm) bgm.play().catch(()=>{});
 
   // spawnループ
   spawnIntervalId = setInterval(()=> {
