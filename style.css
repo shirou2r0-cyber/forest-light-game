@@ -85,4 +85,5 @@ button:active { transform: translateY(1px); }
   color: white;
   text-align:center;
   padding:20px;
+  pointer-events: none;
 }
