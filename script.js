@@ -24,13 +24,11 @@ function createLight(lifetime = 3000){
   const light = document.createElement("div");
   light.className = "light";
 
-  // 出現位置（プレイエリアの余白を少し残す）
   const x = rand(6, 94);
   const y = rand(12, 86);
   light.style.left = x + "%";
   light.style.top = y + "%";
 
-  // クリック・タッチのハンドラ
   const collect = (e) => {
     e.stopPropagation();
     score++;
@@ -47,7 +45,7 @@ function createLight(lifetime = 3000){
   playArea.appendChild(light);
 
   // 自動消滅
-  const removeTimeout = setTimeout(() => {
+  setTimeout(() => {
     if (document.body.contains(light)) {
       light.classList.add("pop");
       setTimeout(()=> {
@@ -59,7 +57,6 @@ function createLight(lifetime = 3000){
 
 // --- ゲーム開始 ---
 function startGame(){
-  // reset
   score = 0; remaining = 30;
   scoreEl.textContent = `Score: ${score}`;
   timerEl.textContent = `Time: ${remaining}`;
@@ -67,16 +64,13 @@ function startGame(){
   restartBtn.style.display = "none";
   startBtn.style.display = "none";
 
-  // BGM再生（ユーザー操作トリガーなのでブラウザが許可）
-  //if (bgm) bgm.play().catch(()=>{});
+  if (bgm) bgm.play().catch(()=>{});
 
-  // spawnループ
   spawnIntervalId = setInterval(()=> {
     const current = playArea.querySelectorAll(".light").length;
     if (current < maxLights) createLight(3000 + Math.random()*2200);
-  }, 700);
+  }, 800);
 
-  // タイマー
   gameTimerId = setInterval(()=> {
     remaining--;
     timerEl.textContent = `Time: ${remaining}`;
@@ -90,7 +84,6 @@ function endGame(){
   clearInterval(gameTimerId);
   if (bgm) bgm.pause();
 
-  // 光を消す
   document.querySelectorAll(".light").forEach(l => {
     l.classList.add("pop");
     setTimeout(()=> { if (l.parentNode) l.remove(); }, 250);
