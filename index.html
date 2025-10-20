@@ -1,39 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>森の光を集めるゲーム</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>森の光あつめゲーム</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>森の光を集める</h1>
-      <div class="hud">
-        <div id="score">Score: 0</div>
-        <div id="timer">Time: 30</div>
-      </div>
-    </header>
-
-    <main>
-      <div id="play-area" class="play-area" aria-label="ゲームエリア"></div>
-      <div class="controls">
-        <button id="start-btn">スタート</button>
-        <button id="restart-btn" style="display:none">リスタート</button>
-      </div>
-      <div id="end-screen" class="end-screen" aria-hidden="true"></div>
-    </main>
-
-    <footer>
-      <small>リラックスして光を集めよう</small>
-    </footer>
+  <div id="overlay">
+    <div id="ui">
+      <div id="score">Score: 0</div>
+      <div id="timer">Time: 30</div>
+      <button id="start-btn">▶ スタート</button>
+      <button id="restart-btn" style="display:none;">↺ リスタート</button>
+    </div>
   </div>
 
+  <div id="play-area"></div>
+
+  <div id="end-screen"></div>
+
+  <!-- 効果音とBGM -->
+  <audio id="pop-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_21e92756ac.mp3" preload="auto"></audio>
+  <audio id="bgm" src="https://cdn.pixabay.com/audio/2022/02/23/audio_5b8c6a7a1d.mp3" preload="auto" loop></audio>
+
   <script src="script.js"></script>
-
-  <audio id="pop-sound" src="se-pop.mp3" preload="auto"></audio>
-  <audio id="bgm" src="bgm-forest.mp3" preload="auto" loop></audio>
-
 </body>
 </html>
